@@ -75,6 +75,7 @@ const CheckList = () => {
  const reset = () => {
    resetParentValue();
    resetChildValue();
+   window.location.reload();
  }
 
  const submit = (e) =>{
@@ -123,16 +124,16 @@ const CheckList = () => {
 }
   return (
     <div>
-      <fieldset style={{width:'700px',marginLeft:'200px',marginTop:'50px'}}>
+      <fieldset style={{width:'700px',marginLeft:'200px',marginTop:'50px',background:'white'}}>
       <h5>Deep Dive Meeting</h5>
        <Form className="p-4">
 
             <div style={{color:'green',textAlign:'center'}}>{successMsg}</div>
             <div style={{color:'Red',textAlign:'center'}}>{errMsg}</div>
             
-              <div style={{background:'rgb(221,52,68)', width:'700px',padding:'10px',paddingTop:'25px',marginBottom:'15px'}}>       
+              <div style={{background:'rgb(180, 225, 231)', width:'700px',padding:'10px',paddingTop:'25px',marginBottom:'15px'}}>       
                 <Form.Group as={Row} controlId="formBasicEmail">
-                <Form.Label className="text text-white" column sm="2">
+                <Form.Label className="text text-black" column sm="2">
                   Meeting ID
                 </Form.Label>
                 <Col sm="10">

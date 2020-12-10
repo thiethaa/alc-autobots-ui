@@ -3,6 +3,7 @@ import { BrowserRouter ,Route,Switch} from 'react-router-dom'
 import CheckList from './components/CheckList'
 import Questionnare from './components/Questionnare'
 import Layout from './layout/Layout';
+import './app.css';
 
 export default function App() {
   return (
