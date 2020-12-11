@@ -123,21 +123,22 @@ const CheckList = () => {
 
 }
   return (
-    <div>
-      <fieldset style={{width:'700px',marginLeft:'200px',marginTop:'50px',background:'white'}}>
-      <h5>Deep Dive Meeting</h5>
+    <div className="checklistBox">
+      <fieldset>
+      <h5 className="title">Deep Dive Meeting</h5>
        <Form className="p-4">
 
             <div style={{color:'green',textAlign:'center'}}>{successMsg}</div>
             <div style={{color:'Red',textAlign:'center'}}>{errMsg}</div>
             
-              <div style={{background:'rgb(180, 225, 231)', width:'700px',padding:'10px',paddingTop:'25px',marginBottom:'15px'}}>       
+              <div className="idFormBox">       
                 <Form.Group as={Row} controlId="formBasicEmail">
-                <Form.Label className="text text-black" column sm="2">
+                <Form.Label className="text text-white" column sm="2">
                   Meeting ID
                 </Form.Label>
                 <Col sm="10">
-                  <Form.Control 
+                  <Form.Control className="inputBox"
+                  style={{boxShadow:'2px 2px grey'}}
                   type="text" 
                   value={id}
                   onChange={(e)=>{setId(e.target.value);setErrMsg('');setSuccessMsg('')}}
@@ -509,7 +510,7 @@ const CheckList = () => {
                 onClick={()=>setAddMemberStatus(!addMember)}
                 label="Add members and start Conversation in Teams" />
           </Form.Group>
-          <div style={{marginLeft:'30%'}}>
+          <div style={{marginLeft:'40%'}}>
           <Button type="submit" onClick={submit} variant="success" style={{width:'200px',margin:'5px'}}>Submit</Button>
           <Button type="reset" onClick={reset} variant="danger" style={{width:'200px',margin:'5px'}}>Reset</Button>
           </div>
