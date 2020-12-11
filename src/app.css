@@ -9,6 +9,9 @@ body {
   font-weight: bold;
   padding-top: 10px;
 }
+.fa-list-alt {
+  color: blue;
+}
 .checklistBox {
   width: 780px;
   margin-left: 400px;
@@ -16,6 +19,9 @@ body {
   background: rgb(242, 245, 245);
   padding: 15px;
   box-shadow: 4px 4px rgb(140, 141, 141);
+}
+.inputBox {
+  box-shadow: 2px 2px grey;
 }
 .idFormBox {
   background: rgb(7, 73, 214);

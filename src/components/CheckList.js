@@ -125,7 +125,7 @@ const CheckList = () => {
   return (
     <div className="checklistBox">
       <fieldset>
-      <h5 className="title">Deep Dive Meeting</h5>
+      <h5 className="title"><i className="fas fa-list-alt"></i>  Deep Dive Meeting</h5>
        <Form className="p-4">
 
             <div style={{color:'green',textAlign:'center'}}>{successMsg}</div>
@@ -138,7 +138,6 @@ const CheckList = () => {
                 </Form.Label>
                 <Col sm="10">
                   <Form.Control className="inputBox"
-                  style={{boxShadow:'2px 2px grey'}}
                   type="text" 
                   value={id}
                   onChange={(e)=>{setId(e.target.value);setErrMsg('');setSuccessMsg('')}}

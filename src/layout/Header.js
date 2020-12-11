@@ -9,8 +9,8 @@ const Header = () => {
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
-        <NavLink className="headerLink" to="/checklist">PreMigration</NavLink>
-        <NavLink className="headerLink" to="/questionnare">System Configuration</NavLink>
+        <NavLink className="headerLink" to="/checklist">Migration Plan and CheckList</NavLink>
+        <NavLink className="headerLink" to="/questionnare">System Cloud Migration Configuration</NavLink>
       </Nav>  
     </Navbar.Collapse>
   </Navbar>
