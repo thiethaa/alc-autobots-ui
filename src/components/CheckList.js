@@ -532,11 +532,11 @@ const handleShow = (e) => {
                 </Modal.Header>
                 <Modal.Body>Reseting will reset all the fields. Are you sure you want to reset?</Modal.Body>
                 <Modal.Footer>
+                  <Button variant="dark" onClick={reset}>
+                    Yes
+                  </Button>
                   <Button variant="danger" onClick={handleClose}>
                     No
-                  </Button>
-                  <Button variant="success" onClick={reset}>
-                    Yes
                   </Button>
                 </Modal.Footer>
               </Modal>
