@@ -139,8 +139,8 @@ const handleShow = (e) => {
       <h5 className="title"><i className="fas fa-list-alt"></i>  Deep Dive Meeting</h5>
        <Form className="p-4">
 
-            <div style={{color:'green',textAlign:'center'}}>{successMsg}</div>
-            <div style={{color:'Red',textAlign:'center'}}>{errMsg}</div>
+            <div style={{color:'green',textAlign:'center',padding:'10px',margin:'5px'}}>{successMsg}</div>
+            <div style={{color:'Red',textAlign:'center',padding:'10px',margin:'5px'}}>{errMsg}</div>
             
               <div>       
                 <Form.Group as={Row} controlId="formBasicEmail">
