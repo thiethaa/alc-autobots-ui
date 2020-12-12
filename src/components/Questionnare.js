@@ -1,11 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import {Form,Col,Row,Button} from 'react-bootstrap';
+import {Form,Col,Row,Button,Modal} from 'react-bootstrap';
 import axios from 'axios';
 
 const Questionnare = () => {
 
     const [id,setId] = useState('');
+    const [successMsg, setSuccessMsg] = useState('');
     const [errMsg,setErrMsg] =useState('');
 
     const [webCtrlVersion,setWebCtrlVersion] = useState('');
@@ -46,8 +47,9 @@ const Questionnare = () => {
     if(id.length > 0){
       axios.post('http://localhost:7071/add-questionnare',newQuestionnareDate)
           .then(response => {
-              alert("Questionnare Saved Successfully!")
-              reset();
+              setSuccessMsg("Data Saved Successfully!")
+              // alert("Questionnare Saved Successfully!")
+              // reset();
           })
   }else{
       setErrMsg ("Questionnare Id is Required!!!")
@@ -73,12 +75,20 @@ const Questionnare = () => {
     window.location.reload();
   }
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = (e) => {
+    e.preventDefault();
+    setShow(true)
+  };
+
   return (
     <div className="checklistBox">
     <fieldset>
     <h5 className="title"><i className="fas fa-list-alt"></i>  System Configuration (WebCTRL and I-Vu)</h5>
      <Form className="p-4">
 
+     <div style={{color:'green',textAlign:'center'}}>{successMsg}</div>
      <div style={{color:'Red',textAlign:'center'}}>{errMsg}</div>
 
           <div>       
@@ -90,7 +100,7 @@ const Questionnare = () => {
                 <Form.Control className="inputBox"
                 type="text" 
                 value={id}
-                onChange={(e)=>{setId(e.target.value);setErrMsg('')}}
+                onChange={(e)=>{setId(e.target.value);setErrMsg('');setSuccessMsg('')}}
                 placeholder="Questionnare ID" required/>
               </Col>
             </Form.Group>
@@ -242,7 +252,23 @@ const Questionnare = () => {
 
               <div style={{marginLeft:'40%'}}>
                 <Button type="submit" onClick={submit} variant="info" style={{width:'200px',margin:'6px'}}>Submit</Button>
-                <Button type="reset" onClick={reset} variant="secondary" style={{width:'200px',margin:'4px'}}>Reset</Button>
+                <Button type="reset" onClick={handleShow} variant="secondary" style={{width:'200px'}}>Reset</Button>
+  
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Reseting Field</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>Reseting will reset all the fields. Are you sure you want to reset?</Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="danger" onClick={handleClose}>
+                      No
+                    </Button>
+                    <Button variant="success" onClick={reset}>
+                      Yes
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+
               </div>
           </Form>
       </fieldset>

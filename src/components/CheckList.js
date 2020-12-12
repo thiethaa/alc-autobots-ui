@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Form,Row,Col } from 'react-bootstrap';
+import { Button, Form,Row,Col,Modal } from 'react-bootstrap';
 import axios from 'axios';
 
 const CheckList = () => {
@@ -39,10 +39,12 @@ const CheckList = () => {
   const [targetDates,setTargetDatesStatus] = useState(false);
   const [addMember,setAddMemberStatus] = useState(false);
 
+
   const scheduleDeepDiveController = () => {
     setDeepDiveStatus(!scheduleDeepDive);
        resetChildValue();
   }
+
   const resetChildValue = () => {
       setDetermineCustomerStatus(false);
       setDisscussAddonsStatus(false);
@@ -65,18 +67,6 @@ const CheckList = () => {
       setTestingValidationStatus(false);
       setTargetDatesStatus(false);
   }
- const resetParentValue = () => {
-      setQuestionnareStatus(false);
-      setHubPageStatus(false);
-      setDeepDiveStatus(false);
-      setAddMemberStatus(false);
- }
-
- const reset = () => {
-   resetParentValue();
-   resetChildValue();
-   window.location.reload();
- }
 
  const submit = (e) =>{
    e.preventDefault();
@@ -109,19 +99,40 @@ const CheckList = () => {
    }
     console.log(newData);
 
-
     if(id.length > 0){
       axios.post('http://localhost:7070/add-meeting',newData)
           .then(response => {
-              alert("Data Saved Successfully!")
+              // alert("Data Saved Successfully!")
               setSuccessMsg("Data Saved Successfully!")
-              reset();
+              // reset();
           })
   }else{
       setErrMsg ("Meeting Id is Required!!!")
   }
-
 }
+
+ const resetParentValue = () => {
+      setQuestionnareStatus(false);
+      setHubPageStatus(false);
+      setDeepDiveStatus(false);
+      setAddMemberStatus(false);
+  }
+
+ const reset = () => {
+   resetParentValue();
+   resetChildValue();
+   window.location.reload();
+ }
+
+/* Modal */
+const [show, setShow] = useState(false);
+const handleClose = () => setShow(false);
+const handleShow = (e) => {
+  e.preventDefault();
+  setShow(true)
+};
+
+
   return (
     <div className="checklistBox">
       <fieldset>
@@ -513,9 +524,25 @@ const CheckList = () => {
           </Form.Group>
           <div style={{marginLeft:'40%'}}>
           <Button type="submit" onClick={submit} variant="info" style={{width:'200px',margin:'5px'}}>Submit</Button>
-          <Button type="reset" onClick={reset} variant="secondary" style={{width:'200px'}}>Reset</Button>
+          <Button type="reset" onClick={handleShow} variant="secondary" style={{width:'200px'}}>Reset</Button>
+  
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Reseting Field</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Reseting will reset all the fields. Are you sure you want to reset?</Modal.Body>
+                <Modal.Footer>
+                  <Button variant="danger" onClick={handleClose}>
+                    No
+                  </Button>
+                  <Button variant="success" onClick={reset}>
+                    Yes
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+
           </div>
-      </Form>
+        </Form>
       </fieldset>    
     </div>
   )
