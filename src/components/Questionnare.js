@@ -238,9 +238,9 @@ const Questionnare = () => {
                 </Form.Group>
               </Form.Row>
 
-              <div style={{marginLeft:'45%'}}>
-                <Button type="submit" onClick={submit} variant="info" style={{width:'200px',margin:'5px'}}>Submit</Button>
-                <Button type="reset" onClick={reset} variant="secondary" style={{width:'200px'}}>Reset</Button>
+              <div style={{marginLeft:'40%'}}>
+                <Button type="submit" onClick={submit} variant="info" style={{width:'200px',margin:'6px'}}>Submit</Button>
+                <Button type="reset" onClick={reset} variant="secondary" style={{width:'200px',margin:'4px'}}>Reset</Button>
               </div>
           </Form>
       </fieldset>
