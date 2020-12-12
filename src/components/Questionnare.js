@@ -241,7 +241,7 @@ const Questionnare = () => {
 
       <div style={{marginLeft:'45%'}}>
       <Button type="submit" onClick={submit} variant="info" style={{width:'200px',margin:'5px'}}>Submit</Button>
-      <Button type="reset" onClick={reset} variant="light" style={{width:'200px'}}>Reset</Button>
+      <Button type="reset" onClick={reset} variant="secondary" style={{width:'200px'}}>Reset</Button>
       </div>
       
      </fieldset>

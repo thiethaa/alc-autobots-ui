@@ -1,6 +1,7 @@
 html,
 body {
   width: 100%;
+  background: rgb(239, 241, 245);
 }
 .title {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
