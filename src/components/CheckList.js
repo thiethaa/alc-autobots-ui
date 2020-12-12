@@ -131,9 +131,9 @@ const CheckList = () => {
             <div style={{color:'green',textAlign:'center'}}>{successMsg}</div>
             <div style={{color:'Red',textAlign:'center'}}>{errMsg}</div>
             
-              <div className="idFormBox">       
+              <div>       
                 <Form.Group as={Row} controlId="formBasicEmail">
-                <Form.Label className="text text-white" column sm="2">
+                <Form.Label className="text text-info" column sm="2">
                   Meeting ID
                 </Form.Label>
                 <Col sm="10">
@@ -145,6 +145,8 @@ const CheckList = () => {
                 </Col>
               </Form.Group>
             </div>
+            
+    <hr className="border"></hr>
 
           <Form.Group id="formGridCheckbox">
             <Form.Check 
@@ -510,8 +512,8 @@ const CheckList = () => {
                 label="Add members and start Conversation in Teams" />
           </Form.Group>
           <div style={{marginLeft:'40%'}}>
-          <Button type="submit" onClick={submit} variant="success" style={{width:'200px',margin:'5px'}}>Submit</Button>
-          <Button type="reset" onClick={reset} variant="danger" style={{width:'200px',margin:'5px'}}>Reset</Button>
+          <Button type="submit" onClick={submit} variant="info" style={{width:'200px',margin:'5px'}}>Submit</Button>
+          <Button type="reset" onClick={reset} variant="light" style={{width:'200px'}}>Reset</Button>
           </div>
       </Form>
       </fieldset>    

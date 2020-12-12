@@ -4,8 +4,8 @@ import {NavLink} from 'react-router-dom';
 
 const Header = () => {
   return (
-    <Navbar style={{background:'rgb(7, 73, 214)',boxShadow: '1px 1px 2px 2px rgb(15, 15, 139)'}} fixed="top" expand="lg">
-    <Navbar.Brand style={{fontFamily:'fantasy',color:'lightblue'}}>AutomatedLogic</Navbar.Brand>
+    <Navbar bg="info"  fixed="top" expand="lg">
+    <Navbar.Brand style={{fontFamily:'fantasy',color:'rgb(173,224,254)'}}>AutomatedLogic</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
@@ -17,3 +17,8 @@ const Header = () => {
   )
 }
 export default Header
+
+
+// style={{background:'rgb(237,253,253)',boxShadow: '1px 1px 2px 2px rgb(170, 224, 224)'}}
+
+// rgb(173,224,254)
