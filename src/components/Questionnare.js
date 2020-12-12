@@ -23,7 +23,8 @@ const Questionnare = () => {
     const [sourceNo,setSourceNo] = useState(''); 
     const [sampleNo,setSampleNo] = useState('');
 
-  const submit = () =>{
+  const submit = (e) =>{
+    e.preventDefault();
     const newQuestionnareDate ={
       id,
       webCtrlVersion,
@@ -69,6 +70,7 @@ const Questionnare = () => {
     setPointsNo('');
     setSourceNo('');
     setSampleNo('');
+    window.location.reload();
   }
 
   return (
@@ -143,7 +145,7 @@ const Questionnare = () => {
 
               <Form.Group id="formGridCheckbox">
               <Form.Label>Do you depend on specific From: addresses in notifications?</Form.Label>
-              <Form.Check 
+                  <Form.Check 
                   type="checkbox" 
                   value={addressesInNotification}
                   onClick={()=>setAddressesInNotification('Yes')}
