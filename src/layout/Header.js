@@ -1,11 +1,12 @@
 import React from 'react';
 import {Navbar,Nav} from 'react-bootstrap';
 import {NavLink} from 'react-router-dom';
+import logo from '../image/alc-logo.png';
 
 const Header = () => {
   return (
     <Navbar bg="info"  fixed="top" expand="lg">
-    <Navbar.Brand style={{fontFamily:'fantasy',color:'rgb(173,224,254)'}}>AutomatedLogic</Navbar.Brand>
+    <Navbar.Brand><img className="logo"  src={logo} alt="logo" style={{minWidth: '8rem', height:'3rem'}}></img></Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
@@ -19,6 +20,3 @@ const Header = () => {
 export default Header
 
 
-// style={{background:'rgb(237,253,253)',boxShadow: '1px 1px 2px 2px rgb(170, 224, 224)'}}
-
-// rgb(173,224,254)
