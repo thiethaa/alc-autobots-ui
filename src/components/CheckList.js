@@ -144,7 +144,7 @@ const handleShow = (e) => {
             
               <div>       
                 <Form.Group as={Row} controlId="formBasicEmail">
-                <Form.Label className="text text-info" column sm="2">
+                <Form.Label className="text text-danger" column sm="2">
                   Meeting ID
                 </Form.Label>
                 <Col sm="10">
@@ -523,8 +523,8 @@ const handleShow = (e) => {
                 label="Add members and start Conversation in Teams" />
           </Form.Group>
           <div style={{marginLeft:'40%'}}>
-          <Button type="submit" onClick={submit} variant="info" style={{width:'200px',margin:'5px'}}>Submit</Button>
-          <Button type="reset" onClick={handleShow} variant="secondary" style={{width:'200px'}}>Reset</Button>
+          <Button type="submit" onClick={submit} variant="dark" style={{width:'200px',margin:'5px'}}>Submit</Button>
+          <Button type="reset" onClick={handleShow} variant="danger" style={{width:'200px'}}>Reset</Button>
   
               <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

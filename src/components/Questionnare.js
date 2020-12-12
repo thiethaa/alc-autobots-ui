@@ -93,7 +93,7 @@ const Questionnare = () => {
 
           <div>       
             <Form.Group as={Row} controlId="formBasicEmail">
-              <Form.Label className="text text-info" column sm="3">
+              <Form.Label className="text text-danger" column sm="3">
                 Questionnare ID
               </Form.Label>
               <Col sm="9">
@@ -190,7 +190,7 @@ const Questionnare = () => {
                 label="No"/>
             </Form.Group>
 
-            <h5 className="text text-info">Size of Environment : </h5>
+            <h5 className="text text-danger">Size of Environment : </h5>
             <Form.Row>
                 <Form.Group as={Col} controlId="formGridState">
                   <Form.Label>System directory size (bytes):</Form.Label>
@@ -211,7 +211,7 @@ const Questionnare = () => {
                 </Form.Group>
             </Form.Row>
 
-            <h5 className="text text-info">System Settings : System Statistics :</h5>
+            <h5 className="text text-danger">System Settings : System Statistics :</h5>
               <Form.Row>
                 <Form.Group as={Col} controlId="formGridEmail">
                   <Form.Label>Number of controllers:</Form.Label>
@@ -251,8 +251,8 @@ const Questionnare = () => {
               </Form.Row>
 
               <div style={{marginLeft:'40%'}}>
-                <Button type="submit" onClick={submit} variant="info" style={{width:'200px',margin:'6px'}}>Submit</Button>
-                <Button type="reset" onClick={handleShow} variant="secondary" style={{width:'200px'}}>Reset</Button>
+                <Button type="submit" onClick={submit} variant="dark" style={{width:'200px',margin:'6px'}}>Submit</Button>
+                <Button type="reset" onClick={handleShow} variant="danger" style={{width:'200px'}}>Reset</Button>
   
                 <Modal show={show} onHide={handleClose}>
                   <Modal.Header closeButton>
