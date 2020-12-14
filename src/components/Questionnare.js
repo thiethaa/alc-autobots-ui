@@ -9,6 +9,7 @@ const Questionnare = () => {
     const [successMsg, setSuccessMsg] = useState('');
     const [errMsg,setErrMsg] =useState('');
 
+/* system configuration */
     const [webCtrlVersion,setWebCtrlVersion] = useState('');
     const [webCtrlIp,setWebCtrlIp] = useState('');
     const [addOnsList,setAddOnsList] = useState('');
@@ -24,6 +25,17 @@ const Questionnare = () => {
     const [sourceNo,setSourceNo] = useState(''); 
     const [sampleNo,setSampleNo] = useState('');
 
+/* site controller */
+    const [controllerModel,setControllerModel] = useState('');
+    const [controllerIpAddress,setControllerIpAddress]= useState('');
+    const [controllerFirmware,setControllerFirmware]= useState('');
+    const [bacNet,setBacNet]= useState('');
+
+/* site networking */
+    const [internetProxy,setInternetProxy] = useState('');
+    const [hardwareVpn,setHardwareVpn] =useState('');
+
+/* submit handler */
   const submit = (e) =>{
     e.preventDefault();
     const newQuestionnareDate ={
@@ -41,13 +53,22 @@ const Questionnare = () => {
       controllerNo,
       pointsNo,
       sourceNo,
-      sampleNo
+      sampleNo,
+      controllerModel,
+      controllerIpAddress,
+      controllerFirmware,
+      bacNet,
+      internetProxy,
+      hardwareVpn
     }
     console.log(newQuestionnareDate);
     if(id.length > 0){
       axios.post('http://localhost:7071/add-questionnare',newQuestionnareDate)
           .then(response => {
-              setSuccessMsg("Data Saved Successfully!")
+            setSuccessMsg("Data Saved Successfully!")
+            setTimeout(() => {
+             setSuccessMsg('')
+            }, 3000);
               // alert("Questionnare Saved Successfully!")
               // reset();
           })
@@ -72,6 +93,12 @@ const Questionnare = () => {
     setPointsNo('');
     setSourceNo('');
     setSampleNo('');
+    setControllerModel('');
+    setControllerIpAddress('');
+    setControllerFirmware('');
+    setBacNet('');
+    setInternetProxy('');
+    setHardwareVpn('');
     window.location.reload();
   }
 
@@ -85,9 +112,9 @@ const Questionnare = () => {
   return (
     <div className="checklistBox">
     <fieldset>
-    <h5 className="title"><i className="fas fa-list-alt"></i>  System Configuration (WebCTRL and I-Vu)</h5>
      <Form className="p-4">
-
+     <h4 className="headerTitle">System Cloud Migration Questionnaire</h4>
+     
         <div style={{color:'green',textAlign:'center',padding:'10px',margin:'5px'}}>{successMsg}</div>
         <div style={{color:'Red',textAlign:'center',padding:'10px',margin:'5px'}}>{errMsg}</div>
 
@@ -107,6 +134,8 @@ const Questionnare = () => {
           </div>
 
       <hr className="border"></hr>
+
+      <div className="title"><i className="fas fa-list-alt"></i>  System Configuration (WebCTRL and I-Vu)</div>
 
               <Form.Group>
               <Form.Label>What version of WebCTRL or I-Vu are you currently running?</Form.Label>
@@ -190,7 +219,7 @@ const Questionnare = () => {
                 label="No"/>
             </Form.Group>
 
-            <h5 className="text text-info">Size of Environment : </h5>
+            <h6 className="text text-info">Size of Environment : </h6>
             <Form.Row>
                 <Form.Group as={Col} controlId="formGridState">
                   <Form.Label>System directory size (bytes):</Form.Label>
@@ -211,7 +240,7 @@ const Questionnare = () => {
                 </Form.Group>
             </Form.Row>
 
-            <h5 className="text text-info">System Settings : System Statistics :</h5>
+            <h6 className="text text-info">System Settings : System Statistics :</h6>
               <Form.Row>
                 <Form.Group as={Col} controlId="formGridEmail">
                   <Form.Label>Number of controllers:</Form.Label>
@@ -250,6 +279,75 @@ const Questionnare = () => {
                 </Form.Group>
               </Form.Row>
 
+          <hr className="border"></hr>
+
+          <div className="title"><i className="fas fa-list-alt"></i>  Site Controller</div>
+          <h6 className="text text-info">List all controllers connected to the corporate Ethernet network : </h6>
+          <Form.Row>
+              <Form.Group as={Col} controlId="formGridState">
+                <Form.Label>Model :</Form.Label>
+                <Form.Control className="inputBox" 
+                      type="text"
+                      value={controllerModel} 
+                      onChange={(e)=>setControllerModel(e.target.value)}
+                      placeholder="Enter Your Answer" />
+              </Form.Group>
+          
+              <Form.Group as={Col} controlId="formGridState">
+                <Form.Label>IP Address :</Form.Label>
+                <Form.Control className="inputBox" 
+                      type="text" 
+                      value={controllerIpAddress}
+                      onChange={(e)=>setControllerIpAddress(e.target.value)}
+                      placeholder="Enter Your Answer" />
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="formGridState">
+              <Form.Label>Firmware Version :</Form.Label>
+              <Form.Control className="inputBox" 
+                    type="text" 
+                    value={controllerFirmware}
+                    onChange={(e)=>setControllerFirmware(e.target.value)}
+                    placeholder="Enter Your Answer" />
+            </Form.Group>
+          </Form.Row>
+
+          <Form.Group>
+          <Form.Label>What BACnet/IP port(s) are used communicating with current WebCTRL or I-Vu</Form.Label>
+          <Form.Control className="inputBox" 
+                type="text" 
+                value={bacNet}
+                onChange={(e)=>setBacNet(e.target.value)}
+                placeholder="Enter Your Answer" />
+          </Form.Group>
+
+          <hr className="border"></hr>
+
+          <div className="title"><i className="fas fa-list-alt"></i>  Site Networking</div>
+          
+          <Form.Group>
+          <Form.Label>Does the corporate network require a proxy for internet connectivity?</Form.Label>
+          <Form.Control className="inputBox" 
+                type="text" 
+                value={internetProxy}
+                onChange={(e)=>setInternetProxy(e.target.value)}
+                placeholder="Enter Your Answer" />
+          </Form.Group>
+
+          <Form.Group>
+          <Form.Label>Will the corporate IT department allow a hardware VPN appliance to be installed (Tosibox Lock)?</Form.Label>
+          <Form.Check 
+              type="checkbox" 
+              value={hardwareVpn}
+              onClick={()=>setHardwareVpn('Yes')}
+              label="Yes"/>
+              <Form.Check 
+              type="checkbox" 
+              value={hardwareVpn}
+              onClick={()=>setHardwareVpn('No')}
+              label="No"/>
+          </Form.Group>
+
               <div style={{marginLeft:'40%'}}>
                 <Button type="submit" onClick={submit} variant="info" style={{width:'200px',margin:'6px'}}>Submit</Button>
                 <Button type="reset" onClick={handleShow} variant="secondary" style={{width:'200px'}}>Reset</Button>
@@ -272,7 +370,9 @@ const Questionnare = () => {
               </div>
           </Form>
       </fieldset>
-    </div>
+      </div>
   )
 }
 export default Questionnare
+
+   

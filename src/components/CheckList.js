@@ -7,26 +7,21 @@ const CheckList = () => {
   const [successMsg, setSuccessMsg] = useState('');
   const [errMsg,setErrMsg] =useState('');
 
+  /* deep dive meeting */
   const [sendQuestionnaire, setQuestionnareStatus] = useState(false);
   const [createHubPage, setHubPageStatus] = useState(false);
   const [scheduleDeepDive, setDeepDiveStatus] = useState(false);
-  console.log("schedule " ,scheduleDeepDive);
   const [determineCustomer, setDetermineCustomerStatus] = useState(false);
   const [disscussAddons, setDisscussAddonsStatus] =useState(false);
-  console.log("addons ",disscussAddons);
   const [proxySetting,setProxySettingStatus] = useState(false);
-  console.log("proxy ",proxySetting);
   const [trendExport,setTrendExportStatus] = useState(false);
   const [explainCloudMigrationTool,SetExplainCloudMigrationToolStatus] = useState(false);
   const [networking,setNetworkingStatus] = useState(false);
   const [changeCloud,setChangeCloudStatus] = useState(false);
-  console.log("cloud ",changeCloud);
   const [actionUi,setActionUiStatus] = useState(false);
   const [patching,setPatchingStatus] = useState(false);
   const [siteBuilder,setSideBuilederStatus] = useState(false);
-  console.log("siteBuilder ",siteBuilder);
   const [workArounds,setWorkArroundsStatus] = useState(false);
-  console.log("workArounds ",workArounds);
   const [sourceTrees,setSourceTreesStatus] = useState(false);
   const [gap,setGapStatus] = useState(false);
   const [coming,setComingStatus] = useState(false);
@@ -34,93 +29,198 @@ const CheckList = () => {
   const [methodToMinimize,setMethodTominimizestatus] = useState(false);
   const [determineNetworking,setDetermineNetworkingStatus] = useState(false);
   const [changeRoute,setChangeRouteStatus] = useState(false);
-  console.log("route ",changeRoute);
   const [testingValidation,setTestingValidationStatus] = useState(false);
   const [targetDates,setTargetDatesStatus] = useState(false);
   const [addMember,setAddMemberStatus] = useState(false);
 
+/* upgrade System */
+const [webCtrlAccess,setWebCtrlAccessStatus] = useState(false);
+const [webCtrlKey,setWebCtrlKeyStatus] = useState(false);
+const [bacLicenses,setBacLicensesStatus] = useState(false);
+const [upgradeSystem,setUpgradeSystemStatus] = useState(false);
+const [cleanOutWebRoot,setCleanOutWebRootStatus] = useState(false);
+const [notUsingDerby,setUsingDerbyStatus] = useState(false);
+const [scheduleMigration,setScheduleMigration] = useState(false);
 
-  const scheduleDeepDiveController = () => {
+/* update drivers */
+const [updateAllDevice,setUpdateAllDeviceStatus] = useState(false);
+
+/* tosibox setup */
+const [orderTosibox,setOrderTosiboxStatus]= useState(false);
+const [digitalNetTicket,setDigitalNetTicketStatus]= useState(false);
+const [staticIpAddress,setStaticIpAddressStatus] = useState(false);
+const [switchPort,setSwitchPortStatus]= useState(false);
+const [firewallRules,setFirewallRulesStatus]= useState(false);
+const [configureTosibox,setConfigureTosiboxStatus]= useState(false);
+const [shipTosibox,setShipTosiboxStatus]= useState(false);
+const [veryfyTosiboxbyOwner,setVeryfyTosiboxbyOwner]= useState(false);
+/* cloud sytem setup */
+const [implementAwsNetwork,setImplementAwsNetStatus] = useState(false);
+const [createEmptyAwsSystem,setCreateEmptySytemStatus] = useState(false);
+const [giveToolAndPassword,setGiveToolAndPwdStatus] = useState(false);
+const [giveOwnerWebCtrlUrl,setGiveOwnerWebCtrlurlStatus] = useState(false);
+
+/* owner-premigration */
+const [updateBbmd,setUpdateBbmdStatus] = useState(false);
+const [changeDefaultRoute,setChangeDefaultRouteStatus] = useState(false);
+console.log(changeDefaultRoute);
+const [makeBbmdDevice,setMakeBbmdDeviceStatus] = useState(false);
+
+/* submit handler */
+const submit = (e) =>{
+  e.preventDefault();
+  const newData = {
+   id: id,
+   /* deep dive meeting */
+   sendQuestionnaire,
+   createHubPage,
+   scheduleDeepDiveMeeting: scheduleDeepDive,
+   determineCustomer,
+   disscussAddons,
+   proxySetting,
+   trendExport,
+   explainCloudMigrationTool,
+   networking,
+   changeCloud,
+   actionUi,
+   patching,
+   siteBuilder,
+   workArounds,
+   sourceTrees,
+   gap,
+   coming,
+   passwordNotify,
+   methodToMinimize,
+   determineNetworking,
+   changeRoute,
+   testingValidation,
+   targetDates,
+   addMember,
+/* upgrade system */
+   webCtrlAccess,
+   webCtrlKey,
+   bacLicenses,
+   upgradeSystem,
+   cleanOutWebRoot,
+   notUsingDerby,
+   scheduleMigration,
+/* update drivers */
+   updateAllDevice,
+/* tosibox setup */
+    orderTosibox,
+    digitalNetTicket,
+    staticIpAddress,
+    switchPort,
+    firewallRules,
+    configureTosibox,
+    shipTosibox,
+    veryfyTosiboxbyOwner,
+/* cloud system setup */
+    implementAwsNetwork,
+    createEmptyAwsSystem,
+    giveToolAndPassword,
+    giveOwnerWebCtrlUrl,
+/* owner pre-migration */
+    updateBbmd,
+    changeDefaultRoute,
+    makeBbmdDevice
+  }
+   console.log(newData);
+
+   if(id.length > 0){
+     axios.post('http://localhost:7070/add-meeting',newData)
+         .then(response => {
+             // alert("Data Saved Successfully!")
+           setSuccessMsg("Data Saved Successfully!")
+             setTimeout(() => {
+               setSuccessMsg('')
+              }, 3000);
+             // reset();
+         })
+    }else{
+        setErrMsg ("CheckList Id is Required!!!")
+      }
+    }
+
+const scheduleDeepDiveController = () => {
     setDeepDiveStatus(!scheduleDeepDive);
        resetChildValue();
   }
 
-  const resetChildValue = () => {
-      setDetermineCustomerStatus(false);
-      setDisscussAddonsStatus(false);
-      setProxySettingStatus(false);
-      setTrendExportStatus(false);
-      SetExplainCloudMigrationToolStatus(false);
-      setNetworkingStatus(false);
-      setChangeCloudStatus(false);
-      setActionUiStatus(false);
-      setPatchingStatus(false);
-      setSideBuilederStatus(false);
-      setWorkArroundsStatus(false);
-      setSourceTreesStatus(false);
-      setGapStatus(false);
-      setComingStatus(false);
-      setpasswordNotifyStatus(false);
-      setMethodTominimizestatus(false);
-      setDetermineNetworkingStatus(false);
-      setChangeRouteStatus(false);
-      setTestingValidationStatus(false);
-      setTargetDatesStatus(false);
+const resetChildValue = () => {
+/* deep dive meeting */
+    setDetermineCustomerStatus(false);
+    setDisscussAddonsStatus(false);
+    setProxySettingStatus(false);
+    setTrendExportStatus(false);
+    SetExplainCloudMigrationToolStatus(false);
+    setNetworkingStatus(false);
+    setChangeCloudStatus(false);
+    setActionUiStatus(false);
+    setPatchingStatus(false);
+    setSideBuilederStatus(false);
+    setWorkArroundsStatus(false);
+    setSourceTreesStatus(false);
+    setGapStatus(false);
+    setComingStatus(false);
+    setpasswordNotifyStatus(false);
+    setMethodTominimizestatus(false);
+    setDetermineNetworkingStatus(false);
+    setChangeRouteStatus(false);
+    setTestingValidationStatus(false);
+    setTargetDatesStatus(false);
   }
 
- const submit = (e) =>{
-   e.preventDefault();
-   const newData = {
-    id: id,
-    sendQuestionnaire,
-    createHubPage,
-    scheduleDeepDiveMeeting: scheduleDeepDive,
-    determineCustomer,
-    disscussAddons,
-    proxySetting,
-    trendExport,
-    explainCloudMigrationTool,
-    networking,
-    changeCloud,
-    actionUi,
-    patching,
-    siteBuilder,
-    workArounds,
-    sourceTrees,
-    gap,
-    coming,
-    passwordNotify,
-    methodToMinimize,
-    determineNetworking,
-    changeRoute,
-    testingValidation,
-    targetDates,
-    addmember:addMember,
-   }
-    console.log(newData);
-
-    if(id.length > 0){
-      axios.post('http://localhost:7070/add-meeting',newData)
-          .then(response => {
-              // alert("Data Saved Successfully!")
-              setSuccessMsg("Data Saved Successfully!")
-              // reset();
-          })
-  }else{
-      setErrMsg ("Meeting Id is Required!!!")
+const digitalNetTicketController = () => {
+    setDigitalNetTicketStatus(!digitalNetTicket);
+      resetTosiboxSetupChild();
   }
+
+const resetTosiboxSetupChild = () => {
+    setStaticIpAddressStatus(false);
+    setSwitchPortStatus(false);
+    setFirewallRulesStatus(false);
 }
 
- const resetParentValue = () => {
+const resetParentValue = () => {
+  /* deep dive meeting */
       setQuestionnareStatus(false);
       setHubPageStatus(false);
       setDeepDiveStatus(false);
       setAddMemberStatus(false);
+  /* upgrade system */
+      setWebCtrlAccessStatus(false);
+      setWebCtrlKeyStatus(false);
+      setBacLicensesStatus(false);
+      setUpgradeSystemStatus(false);
+      setCleanOutWebRootStatus(false);
+      setUsingDerbyStatus(false);
+      setScheduleMigration(false);
+      /* update drivers */
+      setUpdateAllDeviceStatus(false);
+
+/* tosibox setup */
+      setOrderTosiboxStatus(false);
+      setDigitalNetTicketStatus(false);
+      setConfigureTosiboxStatus(false);
+      setShipTosiboxStatus(false);
+      setVeryfyTosiboxbyOwner(false);
+/* cloud sytem setup */
+      setImplementAwsNetStatus(false);
+      setCreateEmptySytemStatus(false);
+      setGiveToolAndPwdStatus(false);
+      setGiveOwnerWebCtrlurlStatus(false);
+
+/* owner-premigration */
+      setUpdateBbmdStatus(false);
+      setChangeDefaultRouteStatus(false);
+      setMakeBbmdDeviceStatus(false);
   }
 
  const reset = () => {
    resetParentValue();
    resetChildValue();
+   resetTosiboxSetupChild();
    window.location.reload();
  }
 
@@ -136,8 +236,8 @@ const handleShow = (e) => {
   return (
     <div className="checklistBox">
       <fieldset>
-      <h5 className="title"><i className="fas fa-list-alt"></i>  Deep Dive Meeting</h5>
        <Form className="p-4">
+       <h4 className="headerTitle">Migration Plan and Checklist</h4>
 
             <div style={{color:'green',textAlign:'center',padding:'10px',margin:'5px'}}>{successMsg}</div>
             <div style={{color:'Red',textAlign:'center',padding:'10px',margin:'5px'}}>{errMsg}</div>
@@ -152,13 +252,13 @@ const handleShow = (e) => {
                   type="text" 
                   value={id}
                   onChange={(e)=>{setId(e.target.value);setErrMsg('');setSuccessMsg('')}}
-                  placeholder="Meeting ID" required/>
+                  placeholder="CheckList ID" required/>
                 </Col>
               </Form.Group>
             </div>
 
     <hr className="border"></hr>
-
+    <div className="title"><i className="fas fa-list-alt"></i>  Deep Dive Meeting</div>
           <Form.Group id="formGridCheckbox">
             <Form.Check 
                 type="checkbox" 
@@ -522,6 +622,233 @@ const handleShow = (e) => {
                 onClick={()=>setAddMemberStatus(!addMember)}
                 label="Add members and start Conversation in Teams" />
           </Form.Group>
+
+      <hr className="border"></hr>
+      <div className="title"><i className="fas fa-list-alt"></i> Upgrade System</div>
+               
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={webCtrlAccess}
+              onClick={()=>setWebCtrlAccessStatus(!webCtrlAccess)}
+              label="Give site access to required WebCTRL Build" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={webCtrlKey}
+              onClick={()=>setWebCtrlKeyStatus(!webCtrlKey)}
+              label="Generate WebCTRL 8.0 license key for system" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={bacLicenses}
+              onClick={()=>setBacLicensesStatus(!bacLicenses)}
+              label="Generate licenses for any other products deployed (BACnet/SC Hub etc.)" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={upgradeSystem}
+              onClick={()=>setUpgradeSystemStatus(!upgradeSystem)}
+              label="Upgrade system to 8.0 in place and confirm it is stable and fully functional" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={cleanOutWebRoot}
+              onClick={()=>setCleanOutWebRootStatus(!cleanOutWebRoot)}
+              label="After upgrade, clean out anything from your webroot/system directory that you don't need in the cloud. Everything in there gets copied to the cloud
+              and takes time to move" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={notUsingDerby}
+              onClick={()=>setUsingDerbyStatus(!notUsingDerby)}
+              label="If not using Derby: remove databases directory if it exists" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={scheduleMigration}
+              onClick={()=>setScheduleMigration(!scheduleMigration)}
+              label="Schedule migration" />
+          </Form.Group>
+
+      <hr className="border"></hr>
+      <div className="title"><i className="fas fa-list-alt"></i> Update Drivers</div>
+       
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={updateAllDevice}
+              onClick={()=>setUpdateAllDeviceStatus(!updateAllDevice)}
+              label="Update all devices to latest driver" />
+          </Form.Group>
+      
+
+      <hr className="border"></hr>
+      <div className="title"><i className="fas fa-list-alt"></i> Tosibox Setup</div>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={orderTosibox}
+              onClick={()=>setOrderTosiboxStatus(!orderTosibox)}
+              label="Order Tosibox" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+                <Form.Check 
+                type="checkbox" 
+                value={digitalNetTicket}
+                onClick={digitalNetTicketController}
+                label="Tickets for Digital Networking Team"/>  
+          </Form.Group>
+
+                { digitalNetTicket ?
+                <div className="firstChildBox" style={{paddingLeft:'50px'}}>
+                  <Form.Group>
+                      <Form.Check 
+                      type="checkbox" 
+                      checked={staticIpAddress}
+                      value={staticIpAddress}
+                      onClick={()=>setStaticIpAddressStatus(!staticIpAddress)}
+                      label="Static IP address" />
+                      <Form.Check 
+                      type="checkbox" 
+                      checked={switchPort}
+                      value={switchPort}
+                      onClick={()=>setSwitchPortStatus(!switchPort)}
+                      label="Switch/Patch Port" />
+                      <Form.Check 
+                      type="checkbox" 
+                      checked={firewallRules}
+                      value={firewallRules}
+                      onClick={()=>setFirewallRulesStatus(!firewallRules)}
+                      label="Firewall rules" />
+                    </Form.Group>
+                  </div>
+                  :
+                  <div className="firstChildBox" style={{paddingLeft:'50px'}}>
+                  <Form.Group>
+                      <Form.Check 
+                      type="checkbox" 
+                      disabled
+                      value={staticIpAddress}
+                      onClick={()=>setStaticIpAddressStatus(!staticIpAddress)}
+                      label="Static IP address" />
+                      <Form.Check 
+                      type="checkbox" 
+                      disabled
+                      value={switchPort}
+                      onClick={()=>setSwitchPortStatus(!switchPort)}
+                      label="Switch/Patch Port" />
+                      <Form.Check 
+                      type="checkbox" 
+                      disabled
+                      value={firewallRules}
+                      onClick={()=>setFirewallRulesStatus(!firewallRules)}
+                      label="Firewall rules" />
+                    </Form.Group>
+                  </div>
+                }
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={configureTosibox}
+              onClick={()=>setConfigureTosiboxStatus(!configureTosibox)}
+              label="Configure Tosibox" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={shipTosibox}
+              onClick={()=>setShipTosiboxStatus(!shipTosibox)}
+              label="Ship to site with instructions on installation" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={veryfyTosiboxbyOwner}
+              onClick={()=>setVeryfyTosiboxbyOwner(!veryfyTosiboxbyOwner)}
+              label="Site owner install Tosibox and Dan verify function" />
+          </Form.Group>
+
+      <hr className="border"></hr>
+      <div className="title"><i className="fas fa-list-alt"></i> Cloud System Setup</div>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={implementAwsNetwork}
+              onClick={()=>setImplementAwsNetStatus(!implementAwsNetwork)}
+              label="Implement required network for connectivity to AWS" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={createEmptyAwsSystem}
+              onClick={()=>setCreateEmptySytemStatus(!createEmptyAwsSystem)}
+              label="Create empty system in AWS" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={giveToolAndPassword}
+              onClick={()=>setGiveToolAndPwdStatus(!giveToolAndPassword)}
+              label="Give Barry Admin Tool URL and Password" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={giveOwnerWebCtrlUrl}
+              onClick={()=>setGiveOwnerWebCtrlurlStatus(!giveOwnerWebCtrlUrl)}
+              label="Give Site Owner WebCTRL URL and default user password" />
+          </Form.Group>
+
+      <hr className="border"></hr>
+      <div className="title"><i className="fas fa-list-alt"></i> Owner Pre-Migration</div>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={updateBbmd}
+              onClick={()=>setUpdateBbmdStatus(!updateBbmd)}
+              label="Update device that will be BBMD to latest driver rev and confirm that driver doesn't have BBMD issues (LGR250 mb driver known issues)" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={changeDefaultRoute}
+              onClick={()=>setChangeDefaultRouteStatus(!changeDefaultRoute)}
+              label="Site owner change default route of IP devices to Tosibox IP" />
+          </Form.Group>
+
+          <Form.Group id="formGridCheckbox">
+          <Form.Check 
+              type="checkbox" 
+              value={makeBbmdDevice}
+              onClick={()=>setMakeBbmdDeviceStatus(!makeBbmdDevice)}
+              label="Make one device a BBMD (In SiteBuilder check the Auto box) (Only one device can have the box checked)" />
+          </Form.Group>
+
+
           <div style={{marginLeft:'40%'}}>
           <Button type="submit" onClick={submit} variant="info" style={{width:'200px',margin:'5px'}}>Submit</Button>
           <Button type="reset" onClick={handleShow} variant="secondary" style={{width:'200px'}}>Reset</Button>
@@ -543,9 +870,12 @@ const handleShow = (e) => {
 
           </div>
         </Form>
-      </fieldset>    
-    </div>
+      </fieldset>  
+      </div>  
   )
 }
 
 export default CheckList
+
+
+

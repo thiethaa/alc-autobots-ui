@@ -3,13 +3,26 @@ body {
   width: 100%;
   background: rgb(239, 241, 245);
 }
+.headerTitle {
+  text-align: center;
+  letter-spacing: 2px;
+  color: black;
+  text-decoration: underline;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
 .title {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-weight: bold;
-  padding-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  background-color: rgb(19, 163, 184);
 }
 .fa-list-alt {
-  color: rgb(24, 148, 179);
+  color: rgb(217, 230, 233);
+  margin: 10px;
 }
 .checklistBox {
   width: 780px;
